@@ -60,9 +60,10 @@
   .chat-header {
     background: #4f46e5;
     color: white;
-    padding: 0.5rem;
+    padding: 0.8rem;
     display: flex;
     justify-content: space-between;
+    font-weight: 800;
   }
 
   .chat-header div{
@@ -88,7 +89,7 @@
   }
 
   #chat-options{
-    padding: 0.3rem;
+    padding: 0.5rem;
     outline: none;
     border-radius: 10px;
     position: absolute;
@@ -116,17 +117,20 @@
 
   .chat-body input{
     position: absolute;
-    bottom: 5px;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    width: 95%;
+    bottom: 0;
+    left: 0;
+    padding: 1rem;
+    /* border: 1px solid #ccc; */
+    border: none;
+    width: 100%;
     box-sizing: border-box;
+    border-top: 0.5px solid #ccc;
+    background-color: #f0f0f0f5;
   }
 
   .chat-body input:focus{
     outline: none;
-    border: 2px solid #46b3e5;
+    /* border: 2px solid #46b3e5; */
   }
 
 </style>
