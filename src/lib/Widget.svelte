@@ -1,11 +1,8 @@
 <script lang="ts">
   import chatIconUrl from '../assets/chat2.png';
-  let open = false;
-
-  $: customClass = open ? "chat-icon-open" : "chat-icon";
+  let open = $state(false);
 </script>
 
-<!-- svelte-ignore options_missing_custom_element -->
 <style>
   :host {
     all: initial; /* Reset styles */
@@ -140,7 +137,7 @@
 <svelte:options customElement="chat-widget" />
 
 <div> 
-  <div class="chat-icon"  aria-live="polite" aria-label="Chat" role="button" tabindex="0" on:click={() => (open = !open)} on:keydown={(e) => e.key === "Enter" && (open = !open)}>
+  <div class="chat-icon"  aria-live="polite" aria-label="Chat" role="button" tabindex="0" onclick={() => (open = !open)} onkeydown={(e) => e.key === "Enter" && (open = !open)}>
     <img src={chatIconUrl} alt="Chat Icon">
   </div>
 
@@ -148,7 +145,7 @@
     <div class="chat-dialog">
       <div class="chat-header">
         <p>Chat Widget</p>
-        <div role="button" tabindex="0" on:click={() => (open = !open)} on:keydown={(e) => e.key === "Enter" && (open = !open)}>X</div>
+        <div role="button" tabindex="0" onclick={() => (open = !open)} onkeydown={(e) => e.key === "Enter" && (open = !open)}>X</div>
       </div>
       <div class="chat-body">
         Hello! How can I assist you today?
