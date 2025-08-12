@@ -1,6 +1,8 @@
 <script lang="ts">
   import chatIconUrl from '../assets/chat2.png';
   let open = false;
+
+  $: customClass = open ? "chat-icon-open" : "chat-icon";
 </script>
 
 <!-- svelte-ignore options_missing_custom_element -->
@@ -59,29 +61,99 @@
     background: #4f46e5;
     color: white;
     padding: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .chat-header div{
+    cursor: pointer;
+    font-weight: bolder;
+    padding: 0.5rem;
+    display: flex;
+    place-items: center;
   }
 
   .chat-body {
     flex: 1;
+    position: relative;
+    height: inherit;
     padding: 0.5rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     overflow-y: auto;
   }
+
+  .chat-options{
+    padding: 0.5rem;
+  }
+
+  #chat-options{
+    padding: 0.3rem;
+    outline: none;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 10%;
+    right: 0%;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-end;
+  }
+
+  #chat-options li{
+    padding: 0.3rem;
+    border: 2px solid rgba(178, 227, 250, 0.933);
+    border-radius: 10px;
+    list-style: none;
+    padding: 0.3rem;
+  }
+  #chat-options li:hover{
+    /* background: #f0f0f0; */
+    background: #9ab9ca;
+    cursor: pointer;
+  }
+
+  .chat-body input{
+    position: absolute;
+    bottom: 5px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    width: 95%;
+    box-sizing: border-box;
+  }
+
+  .chat-body input:focus{
+    outline: none;
+    border: 2px solid #46b3e5;
+  }
+
 </style>
 
 <svelte:options customElement="chat-widget" />
 
-<div>
-  <div class="chat-icon" aria-live="polite" aria-label="Chat" role="button" tabindex="0" on:click={() => (open = !open)} on:keydown={(e) => e.key === "Enter" && (open = !open)}>
+<div> 
+  <div class="chat-icon"  aria-live="polite" aria-label="Chat" role="button" tabindex="0" on:click={() => (open = !open)} on:keydown={(e) => e.key === "Enter" && (open = !open)}>
     <img src={chatIconUrl} alt="Chat Icon">
   </div>
 
   {#if open}
     <div class="chat-dialog">
       <div class="chat-header">
-        Chat Dialog
+        <p>Chat Widget</p>
+        <div role="button" tabindex="0" on:click={() => (open = !open)} on:keydown={(e) => e.key === "Enter" && (open = !open)}>X</div>
       </div>
       <div class="chat-body">
         Hello! How can I assist you today?
+        <div class="chat-options">
+            <ul id="chat-options">
+                <li>select</li>
+                <li>About us</li>
+                <li>Conatct support</li>
+            </ul>
+        </div>
+        <input type="text" placeholder="Enter your message here" />
       </div>
     </div>
   {/if}
