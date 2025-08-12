@@ -46,7 +46,7 @@
     width: 400px;
     height: 500px;
     background: white;
-    border-radius: 8px;
+    border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
