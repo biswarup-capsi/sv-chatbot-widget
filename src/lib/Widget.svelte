@@ -64,6 +64,7 @@
     display: flex;
     justify-content: space-between;
     font-weight: 800;
+    font-size: 1.5rem;
   }
 
   .chat-header div{
@@ -72,6 +73,7 @@
     padding: 0.5rem;
     display: flex;
     place-items: center;
+    font-size: medium;
   }
 
   .chat-body {
